@@ -1,0 +1,206 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="PST">
+    <xs:element name="TerritorialePrestazioniSanitarie">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="AnnoRiferimento" type="AnnoRiferimento"/>
+                <xs:element name="PeriodoRiferimento" type="PeriodoRiferimento"/>
+                <xs:element name="CodiceRegione" type="CodiceRegione"/>
+                <xs:element name="AziendaSanitariaRiferimento" maxOccurs="unbounded">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="CodiceAziendaSanitariaRiferimento" type="CodiceAziendaSanitariaRiferimento"/>
+                            <xs:element name="DSM" maxOccurs="unbounded">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="CodiceDSM" type="CodiceDSM"/>
+                                        <xs:element name="Assistito" maxOccurs="unbounded">
+                                            <xs:complexType>
+                                                <xs:sequence>
+                                                    <xs:element name="Id_Rec" type="Id_Rec"/>
+                                                    <xs:element name="Struttura" maxOccurs="unbounded">
+                                                        <xs:complexType>
+                                                            <xs:sequence>
+                                                                <xs:element name="CodiceStruttura" type="CodiceStruttura"/>
+                                                                <xs:element name="Contatto" maxOccurs="unbounded">
+                                                                    <xs:complexType>
+                                                                        <xs:sequence>
+                                                                            <xs:element name="IDContatto" type="IDContatto"/>
+                                                                            <xs:element name="Prestazioni" maxOccurs="unbounded">
+                                                                                <xs:complexType>
+                                                                                    <xs:sequence>
+                                                                                        <xs:element name="ProgressivoPrestazioniContatto" type="ProgressivoPrestazioniContatto"/>
+                                                                                        <xs:element name="DataIntervento" type="xs:date"/>
+                                                                                        <xs:element name="TipoIntervento" type="TipoIntervento"/>
+                                                                                        <xs:element name="ModalitaErogazione" type="ModalitaErogazione"/>
+                                                                                        <xs:element name="SedeIntervento" type="SedeIntervento"/>
+                                                                                        <xs:element name="Operatore1" type="Operatore"/>
+                                                                                        <xs:element name="Operatore2" type="Operatore" minOccurs="0"/>
+                                                                                        <xs:element name="Operatore3" type="Operatore" minOccurs="0"/>
+                                                                                        <xs:element name="TipoOperazione" type="TipoOperazione" default="I"/>
+                                                                                    </xs:sequence>
+                                                                                </xs:complexType>
+                                                                            </xs:element>
+                                                                        </xs:sequence>
+                                                                    </xs:complexType>
+                                                                </xs:element>
+                                                            </xs:sequence>
+                                                        </xs:complexType>
+                                                    </xs:element>
+                                                </xs:sequence>
+                                            </xs:complexType>
+                                        </xs:element>
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:simpleType name="AnnoRiferimento">
+        <xs:restriction base="xs:string">
+            <xs:length value="4"/>
+            <xs:pattern value="[1-2]{1}[0-9]{3}"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="CodiceRegione">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="010"/>
+            <xs:enumeration value="020"/>
+            <xs:enumeration value="030"/>
+            <xs:enumeration value="041"/>
+            <xs:enumeration value="042"/>
+            <xs:enumeration value="050"/>
+            <xs:enumeration value="060"/>
+            <xs:enumeration value="070"/>
+            <xs:enumeration value="080"/>
+            <xs:enumeration value="090"/>
+            <xs:enumeration value="100"/>
+            <xs:enumeration value="110"/>
+            <xs:enumeration value="120"/>
+            <xs:enumeration value="130"/>
+            <xs:enumeration value="140"/>
+            <xs:enumeration value="150"/>
+            <xs:enumeration value="160"/>
+            <xs:enumeration value="170"/>
+            <xs:enumeration value="180"/>
+            <xs:enumeration value="190"/>
+            <xs:enumeration value="200"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="PeriodoRiferimento">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="S1"/>
+            <xs:enumeration value="S2"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="CodiceAziendaSanitariaRiferimento">
+        <xs:restriction base="xs:string">
+            <xs:length value="3"/>
+            <xs:pattern value="[0-9]{3}"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="CodiceDSM">
+        <xs:restriction base="xs:string">
+            <xs:minLength value="1"/>
+            <xs:maxLength value="3"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="IDCittadino">
+        <xs:restriction base="xs:string">
+            <xs:minLength value="20"/>
+            <xs:maxLength value="32"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="CodiceStruttura">
+        <xs:restriction base="xs:string">
+            <xs:minLength value="6"/>
+            <xs:maxLength value="8"/>
+        </xs:restriction>
+    </xs:simpleType>
+  <xs:simpleType name="IDContatto">
+          <xs:restriction base="xs:long">
+                <xs:minInclusive value="1"/>
+                <xs:maxInclusive value="99999999999999"/>
+          </xs:restriction>
+     </xs:simpleType>
+    <xs:simpleType name="ProgressivoPrestazioniContatto">
+          <xs:restriction base="xs:int">
+                <xs:minInclusive value="1"/>
+                <xs:maxInclusive value="99999"/>
+          </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="TipoIntervento">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="01"/>
+            <xs:enumeration value="02"/>
+            <xs:enumeration value="03"/>
+            <xs:enumeration value="04"/>
+            <xs:enumeration value="05"/>
+            <xs:enumeration value="06"/>
+            <xs:enumeration value="07"/>
+            <xs:enumeration value="08"/>
+            <xs:enumeration value="09"/>
+            <xs:enumeration value="10"/>
+            <xs:enumeration value="11"/>
+            <xs:enumeration value="12"/>
+            <xs:enumeration value="13"/>
+            <xs:enumeration value="14"/>
+            <xs:enumeration value="15"/>
+            <xs:enumeration value="16"/>
+            <xs:enumeration value="17"/>
+            <xs:enumeration value="18"/>
+            <xs:enumeration value="19"/>
+            <xs:enumeration value="20"/>
+            <xs:enumeration value="21"/>
+            <xs:enumeration value="22"/>
+            <xs:enumeration value="23"/>
+            <xs:enumeration value="24"/>
+            <xs:enumeration value="25"/>
+            <xs:enumeration value="26"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="ModalitaErogazione">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="1"/>
+            <xs:enumeration value="2"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="SedeIntervento">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="1"/>
+            <xs:enumeration value="2"/>
+            <xs:enumeration value="3"/>
+            <xs:enumeration value="4"/>
+            <xs:enumeration value="5"/>
+            <xs:enumeration value="6"/>
+            <xs:enumeration value="7"/>
+            <xs:enumeration value="8"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="Operatore">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="1"/>
+            <xs:enumeration value="2"/>
+            <xs:enumeration value="3"/>
+            <xs:enumeration value="4"/>
+            <xs:enumeration value="5"/>
+            <xs:enumeration value="6"/>
+            <xs:enumeration value="7"/>
+            <xs:enumeration value="8"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="TipoOperazione">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="I"/>
+            <xs:enumeration value="C"/>
+            <xs:enumeration value="V"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="Id_Rec">
+    <xs:restriction base="xs:string">
+        <xs:length value="88"/>
+    </xs:restriction>
+    </xs:simpleType>
+</xs:schema>
