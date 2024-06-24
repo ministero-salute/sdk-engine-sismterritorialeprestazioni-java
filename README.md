@@ -385,3 +385,5 @@ Il naming del file, se non modificata la politica di rolling (impostazioni), è 
 
 **SDK\_TER-PST.log**
 
+## mantainer:
+ Accenture SpA until January 2026
