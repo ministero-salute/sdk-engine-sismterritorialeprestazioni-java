@@ -157,6 +157,12 @@
             <version>6.4.0</version>
         </dependency>
         
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-annotations</artifactId>
+            <version>2.15.3</version>
+        </dependency>
+        
        <!-- fix tomcat -->  
         <dependency>
 			<groupId>org.springframework.boot</groupId>
